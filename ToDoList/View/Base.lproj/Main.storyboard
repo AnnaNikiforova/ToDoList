@@ -25,7 +25,7 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5z2-kf-uIE">
                                 <rect key="frame" x="309" y="118" width="90" height="44"/>
-                                <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="90" id="VOm-0a-Yqg"/>
                                     <constraint firstAttribute="height" constant="44" id="eKs-8m-FdF"/>
@@ -39,7 +39,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BHP-jU-loB">
-                                <rect key="frame" x="0.0" y="162" width="414" height="700"/>
+                                <rect key="frame" x="0.0" y="172" width="414" height="690"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TaskCell" id="Dqq-tk-nYB" customClass="TaskCell" customModule="ToDoList" customModuleProvider="target">
@@ -51,7 +51,7 @@
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PdC-r7-Vxu">
                                                     <rect key="frame" x="20" y="30" width="30" height="30"/>
-                                                    <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="30" id="knv-xh-gny"/>
                                                         <constraint firstAttribute="height" constant="30" id="slf-Qh-gSt"/>
@@ -93,7 +93,7 @@
                         <constraints>
                             <constraint firstItem="B1Z-xD-PCT" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="2l1-1w-UmS"/>
                             <constraint firstItem="BHP-jU-loB" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="7QT-xJ-UoE"/>
-                            <constraint firstItem="BHP-jU-loB" firstAttribute="top" secondItem="B1Z-xD-PCT" secondAttribute="bottom" id="8jg-Bt-7Pv"/>
+                            <constraint firstItem="BHP-jU-loB" firstAttribute="top" secondItem="B1Z-xD-PCT" secondAttribute="bottom" constant="10" id="8jg-Bt-7Pv"/>
                             <constraint firstItem="BHP-jU-loB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Fgj-TD-KTe"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="5z2-kf-uIE" secondAttribute="trailing" constant="15" id="NC0-HT-xOb"/>
                             <constraint firstItem="5z2-kf-uIE" firstAttribute="leading" secondItem="B1Z-xD-PCT" secondAttribute="trailing" constant="10" id="d5Y-Qe-UHl"/>

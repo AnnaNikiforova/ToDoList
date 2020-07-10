@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import RealmSwift
 
 class TasksListVC: UIViewController {
-
-    var tasks = ["Code", "Eat", "Sleep"]
+    
+    let realm = try! Realm()
+    var tasks: Results<TaskModel>!
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addTaskTextField: UITextField!
@@ -19,45 +21,55 @@ class TasksListVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.tableFooterView = UIView(frame: CGRect.zero)
         addButton.layer.cornerRadius = 20
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
+        
+        tasks = realm.objects(TaskModel.self)
     }
-
+    
     @IBAction func addButtonTapped(_ sender: Any) {
         insertNewTask()
     }
     
     func insertNewTask() {
-        tasks.append(addTaskTextField.text!)
+        let tasks = TaskModel()
+        let indexPath = IndexPath(row: tasks.task.count - 1, section: 0)
         
-        let indexPath = IndexPath(row: tasks.count - 1, section: 0)
         tableView.beginUpdates()
         tableView.insertRows(at: [indexPath], with: .fade)
-        tableView.endUpdates()
-        
+        tasks.task.append(addTaskTextField.text!)
         addTaskTextField.text = ""
+        
+        try! self.realm.write {
+            self.realm.add(tasks)
+        }
+        
+        tableView.endUpdates()
         view.endEditing(true)
     }
     
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
-
+    
 }
 
 extension TasksListVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tasks.count
+        if tasks.count != 0 {
+            return tasks.count
+        } else {
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TaskCell", for: indexPath) as! TaskCell
         
         let taskTitle = tasks[indexPath.row]
-        cell.taskLabel.text = taskTitle
+        cell.taskLabel.text = taskTitle.task
         return cell
     }
     
@@ -67,12 +79,17 @@ extension TasksListVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            tasks.remove(at: indexPath.row)
+            let editingRow = tasks[indexPath.row]
             tableView.beginUpdates()
             tableView.deleteRows(at: [indexPath], with: .fade)
+            
+            try! self.realm.write {
+                self.realm.delete(editingRow)
+            }
+        
             tableView.endUpdates()
         }
     }
-
+    
 }
 
